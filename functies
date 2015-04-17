@@ -1,0 +1,14 @@
+bestandsnaam = input( 'geef naam van tekstbestand met bedragen: ' )
+inp = open ( bestandsnaam, 'r' )
+munten = [ 200, 100, 50, 20, 10, 5, 2, 1 ]
+for regel in inp :
+    bedrag = eval ( regel )
+    betaling = [ ]
+    restbedrag = bedrag
+    for munt in munten :
+        while restbedrag >= munt :
+            betaling.append ( munt )
+            restbedrag = restbedrag - munt
+    assert restbedrag == 0
+    uitkomst = '%s %s' % (betaling + '%3d:' % bedrag)
+    print (uitkomst)
